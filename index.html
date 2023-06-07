@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>HomePage</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css" integrity="sha512-2wAlRtbeOK6TkC5hgn0vzDfH7qJYB6JUihvnNgMzg/4SZCDkaq9qYQ8yL7JEnzgT7pZ9f2tnL+6hfS4SKooxfw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<style>
+		/* Global Styles */
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: sans-serif;
+			background-color: #121212;
+			color: #fff;
+		}
+
+		/* Navigation Bar Styles */
+		.navbar {
+			background-color: #333;
+			color: #fff;
+			font-family: 'Open Sans', sans-serif;
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			z-index: 999;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 10px;
+		}
+
+		.logo {
+			font-size: 24px;
+			font-weight: bold;
+			text-transform: uppercase;
+			text-decoration: none;
+		}
+
+		.logo a {
+			color: #fff;
+			text-decoration: none;
+		}
+
+		.menu {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			display: flex;
+		}
+
+		li {
+			margin: 0 10px;
+		}
+
+		a {
+			color: #fff;
+			text-decoration: none;
+			font-size: 18px;
+			font-weight: bold;
+			padding: 10px;
+			border-radius: 5px;
+			transition: all 0.3s ease;
+		}
+
+		a:hover {
+			background-color: #555;
+		}
+
+		.menu-toggle {
+			cursor: pointer;
+			display: none;
+		}
+
+		.menu-toggle span {
+			display: block;
+			width: 25px;
+			height: 3px;
+			background-color: #fff;
+			margin: 5px 0;
+			transition: all 0.3s ease;
+		}
+
+		@media (max-width: 768px) {
+			.menu {
+				display: none;
+			}
+			.menu-toggle {
+				display: block;
+			}
+			.menu-toggle.open span:nth-child(1) {
+				transform: rotate(45deg) translate(5px, 5px);
+			}
+			.menu-toggle.open span:nth-child(2) {
+				opacity: 0;
+			}
+			.menu-toggle.open span:nth-child(3) {
+				transform: rotate(-45deg) translate(5px, -5px);
+			}
+			.menu-toggle.open + .menu {
+				display: block;
+				position: absolute;
+				top: 60px;
+				left: 0;
+				right: 0;
+				background-color: #fff;
+				padding: 10px;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				transform: translateY(-100%);
+				transition: all 0.3s ease;
+			}
+			.menu-toggle.open + .menu a {
+				display: block;
+				margin: 10px 0;
+			}
+		}
+
+		/* Banner Styles */
+		.banner {
+			height: 500px;
+			background: url(https://4kwallpapers.com/images/wallpapers/dark-background-abstract-background-network-3d-background-6016x3384-8324.png) no-repeat center center fixed;
+			background-size: cover;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.banner h1 {
+			font-size: 38px;
+			font-weight: bold;
+			color: #fff;
+			text-align: center;
+			margin: 0;
+			text-shadow: 2px 2px #333;
+		}
+
+		/* Featured Posts Styles */
+		.featured {
+			background-color: #222;
+			padding: 50px 0;
+		}
+
+		.featured h2 {
+			font-size: 32px;
+			font-weight: bold;
+			color: #fff;
+			text-align: center;
+			margin: 0;
+		}
+
+		.featured .post {
+			background-color: #333;
+			border: 1px solid #555;
+			border-radius: 5px;
+			padding: 20px;
+			margin: 40px auto;
+			max-width: 800px;
+			box-shadow: 2px 2px #000;
+			position: relative;
+		}
+
+		.featured .post::before {
+			content: "";
+			position: absolute;
+			top: -10px;
+			left: -10px;
+			height: calc(100% + 20px);
+			width: calc(100% + 20px);
+			background-color: #444;
+			z-index: -1;
+			border-radius: 5px;
+		}
+
+		.featured .post h3 {
+			font-size: 24px;
+			font-weight: bold;
+			color: #fff;
+			margin-top: 0;
+		}
+
+		.featured .post p {
+			font-size: 16px;
+			color: #ccc;
+			line-height: 1.5;
+			margin-bottom: 20px;
+		}
+
+		.featured .post a {
+			font-size: 18px;
+			color: #fff;
+			text-decoration: none;
+			border: 2px solid #fff;
+			padding: 10px 20px;
+			border-radius: 5px;
+			transition: all 0.3s ease;
+		}
+
+		.featured .post a:hover {
+			background-color: #fff;
+			color: #333;
+		}
+
+		/* Laboratory Activities Archive Styles */
+		.archive {
+			background: url(https://4kwallpapers.com/images/wallpapers/dark-background-abstract-background-network-3d-background-6016x3384-8324.png) no-repeat center center fixed;
+			background-size: cover;
+			padding: 50px 0;
+			max-width: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.archive h2 {
+			font-size: 32px;
+			font-weight: bold;
+			margin: 0;
+			text-align: center;
+			text-shadow: 2px 2px #333;
+		}
+
+		.archive a {
+			font-size: 18px;
+			color: #fff;
+			text-decoration: none;
+			border: 2px solid #fff;
+			padding: 10px 20px;
+			border-radius: 5px;
+			margin-top: 20px;
+			transition: all 0.3s ease;
+		}
+
+		.archive a:hover {
+			background-color: #fff;
+			color: #333;
+		}
+	</style>
+</head>
+<body>
+	<!-- Navigation Bar -->
+	<nav class="navbar">
+			<div class="logo">
+				<a href="HomePage.html">My Website</a>
+			</div>
+			<div class="menu">
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="Features.html">Feature</a></li>
+					<li><a href="Blog.html">Blog</a></li>
+					<li><a href="AboutUs.html">About Us</a></li>
+				</ul>
+			</div>
+			<div class="menu-toggle">
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+		</nav>
+		
+	<!-- Banner -->
+	<div class="banner">
+		<h1>Headline: Innovate. Transform. Succeed.</h1>
+		<br>
+		<h1>Motto: Empowering Digital Growth.</h1>
+	</div>
+
+	<!-- Featured Posts -->
+	<section class="featured">
+		<h2>Featured Posts</h2>
+		<div class="post">
+			<h3>Post Title 1</h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel justo vitae sem venenatis pretium. Suspendisse potenti. Proin rutrum fringilla purus, ac lobortis nibh dictum vel.</p>
+			<a href="https://www.example.com/post1">Read More</a>
+		</div>
+		<div class="post">
+			 <h3>Post Title 2</h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel justo vitae sem venenatis pretium. Suspendisse potenti. Proin rutrum fringilla purus, ac lobortis nibh dictum vel.</p>
+			<a href="https://www.example.com/post2">Read More</a>
+		</div>
+	</section>
+
+	<!-- Laboratory Activities Archive -->
+	<div class="archive">
+		<h2>Laboratory Activities Archive</h2>
+		<a href="https://www.example.com/prelim">Prelim</a>
+		<a href="https://www.example.com/midterm">Midterm</a>
+	</div>
+
+	<!-- Bootstrap JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.bundle.min.js" integrity="sha512-2lISuvCSo0afN+3S2Pj8dzxxaT0Q4VRb6lkI6yraO2Y5/ZAzdBz1Z8OFnFYta6Odt+nysfyHv8eBlYxYoyijbg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</body>
+</html>

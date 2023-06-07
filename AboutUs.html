@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>About Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Global Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #333;
+            color: #fff;
+        }
+
+        /* Navigation Bar Styles */
+        .navbar {
+            background-color: #222;
+            font-family: 'Open Sans', sans-serif;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        .logo a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .menu {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        li {
+            margin: 0 10px;
+        }
+
+        a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #555;
+        }
+
+        .menu-toggle {
+            cursor: pointer;
+            display: none;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .menu {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .menu-toggle.open span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .menu-toggle.open span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .menu-toggle.open span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+
+            .menu-toggle.open + .menu {
+                display: block;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background-color: #fff;
+                padding: 10px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transform: translateY(-100%);
+                transition: all 0.3s ease;
+            }
+
+            .menu-toggle.open + .menu a {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+
+        /* Team Members Styles */
+        .team-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 50px;
+        }
+
+        .team-member {
+            width: 300px;
+            margin: 20px;
+            text-align: center;
+        }
+
+        .team-member img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        .team-member h5 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .team-member .social-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .team-member .social-icons a {
+            color: #fff;
+            margin: 0 5px;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        .team-member .social-icons a:hover {
+            color: #aaa;
+        }
+
+        /* Comment Section Styles */
+        .comment-section {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 50px;
+            margin-top: 50px;
+        }
+
+        .comment-section h3 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .comment-form label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .comment-form input,
+        .comment-form textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .comment-form button {
+            background-color: #fff;
+            color: #333;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .comment-form button:hover {
+            background-color: #aaa;
+        }
+
+        .comments-list {
+            margin-top: 30px;
+        }
+
+        .comments-list .comment {
+            background-color: #222;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .comments-list .comment h4 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .comments-list .comment p {
+            font-size: 14px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">
+            <a href="HomePage.html">My Website</a>
+        </div>
+        <div class="menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Features.html">Feature</a></li>
+                <li><a href="Blog.html">Blog</a></li>
+                <li><a href="AboutUs.html">About Us</a></li>
+            </ul>
+        </div>
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Team Members -->
+    <div class="team-section">
+        <div class="team-member">
+            <img src="https://bigjpg.com/static/css/og.jpg" alt="Team Member 1">
+            <h5>John Doe</h5>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+        <div class="team-member">
+            <img src="https://bigjpg.com/static/css/og.jpg" alt="Team Member 2">
+            <h5>Jane Smith</h5>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+        <div class="team-member">
+            <img src="https://bigjpg.com/static/css/og.jpg" alt="Team Member 3">
+            <h5>Mike Johnson</h5>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Comment Section -->
+    <div class="comment-section">
+        <h3>Visitor Comments</h3>
+        <form class="comment-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" required>
+            <label for="comment">Comment:</label>
+            <textarea id="comment" required></textarea>
+            <button type="submit">Submit Comment</button>
+        </form>
+        <div class="comments-list">
+            <!-- Comments will be dynamically added here using JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        // JavaScript code for comment section
+        const form = document.querySelector('.comment-form');
+        const commentsList = document.querySelector('.comments-list');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const nameInput = document.getElementById('name');
+            const commentInput = document.getElementById('comment');
+
+            const name = nameInput.value;
+            const comment = commentInput.value;
+
+            if (name && comment) {
+                const commentElement = document.createElement('div');
+                commentElement.classList.add('comment');
+                commentElement.innerHTML = `
+                    <h4>${name}</h4>
+                    <p>${comment}</p>
+                `;
+
+                commentsList.appendChild(commentElement);
+
+                nameInput.value = '';
+                commentInput.value = '';
+            }
+        });
+    </script>
+</body>
+</html>
